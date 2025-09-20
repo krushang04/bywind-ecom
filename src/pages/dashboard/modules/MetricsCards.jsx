@@ -3,13 +3,13 @@ import ArrowRise from "../../../assests/ArrowRise.png";
 import ArrowFall from "../../../assests/ArrowFall.png";
 
 const MetricCard = React.memo(({ title, value, change, isPositive, bgColor }) => (
-  <div className={`p-6 rounded-lg hover:shadow-md transition-shadow duration-200 text-black-new-100`} style={{ background: bgColor }}>
-    <h3 className="text-text-md font-semibold text-gray-600 mb-3">{title}</h3>
-    <div className="flex items-center justify-between">
-      <p className="text-display-xs font-semibold ">{value}</p>
-      <div className="flex items-center space-x-1">
-        <span className={`text-text-sm `}>{change}</span>
-        {isPositive ? <img src={ArrowRise} alt="arrow" /> : <img src={ArrowFall} alt="arrow" />}
+  <div className={`p-4 sm:p-6 rounded-lg hover:shadow-md transition-shadow duration-200 text-black-new-100`} style={{ background: bgColor }}>
+    <h3 className="text-text-md font-semibold text-gray-600 mb-3 truncate">{title}</h3>
+    <div className="flex items-center justify-between gap-2">
+      <p className="text-display-xs font-semibold truncate flex-1 min-w-0">{value}</p>
+      <div className="flex items-center space-x-1 flex-shrink-0">
+        <span className="text-text-sm whitespace-nowrap">{change}</span>
+        {isPositive ? <img src={ArrowRise} alt="arrow" className="w-3 h-3 flex-shrink-0" /> : <img src={ArrowFall} alt="arrow" className="w-3 h-3 flex-shrink-0" />}
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@ const MetricsCards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-6 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
       {metrics.map((metric) => (
         <MetricCard key={metric.id} title={metric.title} value={metric.value} change={metric.change} isPositive={metric.isPositive} bgColor={metric.bgColor} />
       ))}

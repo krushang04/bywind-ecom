@@ -38,20 +38,20 @@ const ProjectionsVsActualsChart = () => {
   const isDarkMode = document.documentElement.classList.contains("dark");
 
   return (
-    <div className="w-full bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 h-full">
-      <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Projections vs Actuals</h2>
-      <div className="w-full" style={{ height: "200px" }}>
+    <div className="w-full bg-[#F7F9FB] dark:bg-zinc-800 p-4 rounded-lg shadow-sm h-full">
+      <div className="text-text-md font-semibold text-black-new-100 dark:text-white mb-4">Projections vs Actuals</div>
+      <div className="w-full" style={{ height: "188px" }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={data}
-            margin={{
-              top: 10,
-              right: 20,
-              left: 20,
-              bottom: 10,
-            }}
-            barCategoryGap="25%"
-          >
+            <BarChart
+              data={data}
+              margin={{
+                top: 10,
+                right: 0,
+                left: 0,
+                bottom: 10,
+              }}
+              barCategoryGap="25%"
+            >
             <CartesianGrid strokeDasharray="none" stroke="#f1f5f9" horizontal={true} vertical={false} />
             <YAxis
               axisLine={false}
@@ -60,10 +60,11 @@ const ProjectionsVsActualsChart = () => {
               tickFormatter={(value) => `${value}M`}
               domain={[0, 30]}
               ticks={[0, 10, 20, 30]}
-              dx={-5}
+              dx={0}
+              width={40}
             />
             <Bar dataKey="actuals" stackId="a" fill={isDarkMode ? "#6B7280" : "#A8C5DA"} radius={[0, 0, 0, 0]} />
-            <Bar dataKey="projections" stackId="a" fill={isDarkMode ? "#374151" : "#F7F9FB"} radius={[5, 5, 0, 0]} />
+            <Bar dataKey="projections" stackId="a" fill={isDarkMode ? "#374151" : "#A8C5DA80"} radius={[5, 5, 0, 0]} />
             <XAxis dataKey="month" axisLine={{ stroke: "#e5e7eb", strokeWidth: 1 }} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 12, fontWeight: 400 }} dy={5} />
           </BarChart>
         </ResponsiveContainer>
