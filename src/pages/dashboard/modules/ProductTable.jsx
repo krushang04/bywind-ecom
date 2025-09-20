@@ -60,25 +60,25 @@ const ProductTable = ({ products, title = "Top Selling Products", loading = fals
   }
 
   return (
-    <div className="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 h-full flex flex-col">
-      <h2 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">{title}</h2>
+    <div className="bg-[#F7F9FB] dark:bg-zinc-800 p-6 rounded-lg h-full flex flex-col space-y-1">
+      <div className="text-text-md font-semibold text-black-new-100 dark:text-white">{title}</div>
       <div className="overflow-x-auto flex-1">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-200 dark:border-gray-700">
-              <th className="text-left py-2 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Name</th>
-              <th className="text-left py-2 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price</th>
-              <th className="text-left py-2 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Quantity</th>
-              <th className="text-left py-2 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Amount</th>
+            <tr className="border-b border-black-new-20 dark:border-gray-700 text-black-new-40 text-left text-text-sm">
+              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Name</th>
+              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Price</th>
+              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Quantity</th>
+              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Amount</th>
             </tr>
           </thead>
           <tbody>
             {displayProducts.map((product, index) => (
-              <tr key={index} className="border-b border-gray-50 dark:border-gray-700">
-                <td className="py-2 text-sm text-gray-900 dark:text-gray-200">{product.name}</td>
-                <td className="py-2 text-sm text-gray-600 dark:text-gray-400">{formatCurrency(product.price)}</td>
-                <td className="py-2 text-sm text-gray-600 dark:text-gray-400">{product.quantity}</td>
-                <td className="py-2 text-sm font-medium text-gray-900 dark:text-gray-200">{formatCurrency(product.amount)}</td>
+              <tr key={index} className=" text-black-new-100 text-text-sm dark:text-gray-400">
+                <td className="py-2">{product.name}</td>
+                <td className="py-2">{formatCurrency(product.price)}</td>
+                <td className="py-2">{product.quantity}</td>
+                <td className="py-2">{formatCurrency(product.amount)}</td>
               </tr>
             ))}
           </tbody>

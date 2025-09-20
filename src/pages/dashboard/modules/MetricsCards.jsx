@@ -55,7 +55,7 @@ const MetricsCards = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       {metrics.map((metric) => (
         <MetricCard key={metric.id} title={metric.title} value={metric.value} change={metric.change} isPositive={metric.isPositive} bgColor={metric.bgColor} />
       ))}

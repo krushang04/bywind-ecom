@@ -14,6 +14,14 @@ export default function CustomPieChart({ data }) {
   // Calculate total for percentages
   const total = chartData.reduce((sum, item) => sum + item.value, 0);
 
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      const percent = ((payload[0].value / total) * 100).toFixed(1);
+      return <div className="bg-black-new-40 text-white px-3 py-2 rounded-lg shadow-md">{percent}%</div>;
+    }
+    return null;
+  };
+
   return (
     <div className="flex flex-col items-center h-full">
       <PieChart width={160} height={160}>
@@ -22,25 +30,19 @@ export default function CustomPieChart({ data }) {
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
         </Pie>
-        <Tooltip
-          formatter={(value, _, props) => {
-            const percent = ((value / total) * 100).toFixed(1);
-            return `${percent}%`;
-          }}
-        />
+        <Tooltip content={<CustomTooltip />} />
       </PieChart>
 
       {/* Legend */}
-      <div className="mt-2 space-y-1 w-full">
+      <div className="mt-2 space-y-3 w-full">
         {chartData.map((entry, index) => {
-          const percentage = ((entry.value / total) * 100).toFixed(1);
           return (
             <div key={entry.name} className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color }}></div>
-                <span className="text-gray-700 dark:text-gray-300">{entry.name}</span>
+                <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: entry.color }}></div>
+                <span className=" dark:text-gray-300">{entry.name}</span>
               </div>
-              <span className="text-gray-900 dark:text-white font-medium">{percentage}%</span>
+              <span className=" dark:text-white font-medium text-start">${entry.value}</span>
             </div>
           );
         })}
