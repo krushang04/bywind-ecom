@@ -8,7 +8,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       fixed top-0 left-0 z-40 w-[212px] bg-new-black-10 shadow-xl
       lg:relative lg:translate-x-0 lg:w-[212px] lg:shrink-0 lg:z-auto
       transform transition-transform duration-300 ease-in-out
-      dark:bg-zinc-800 h-auto px-4 py-5 space-y-4
+      dark:bg-zinc-800 h-full overflow-y-auto px-4 py-5 space-y-4
       ${isOpen ? 'translate-x-0' : '-translate-x-full'} space-y-4
     `}
   >
