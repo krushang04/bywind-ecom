@@ -52,7 +52,7 @@ const ProjectionsVsActualsChart = () => {
               }}
               barCategoryGap="25%"
             >
-            <CartesianGrid strokeDasharray="none" stroke="#f1f5f9" horizontal={true} vertical={false} />
+            <CartesianGrid strokeDasharray="none" stroke="#eaecf0" horizontal={true} vertical={false} />
             <YAxis
               axisLine={false}
               tickLine={false}
