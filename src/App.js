@@ -1,12 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Dashboard from './pages/Dashboard';
+import Products from './pages/Products';
+import Orders from './pages/Orders';
+import Customers from './pages/Customers';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 
-function App() {
+const App = () => {
   return (
-    <h1 className="text-3xl font-bold underline bg-gray-200">
-      Hello world!
-    </h1>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="products" element={<Products />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

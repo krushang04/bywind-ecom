@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif"],
         IBMPlexMono: ["IBM Plex Mono"],
       },
       keyframes: {
@@ -61,6 +63,19 @@ module.exports = {
         "green-2": "#d1fadf",
         "select-rule": "#fcfcfd",
         "black-1": "#1d2939",
+        "black-2": "#1C1C1C",
+        "black-new": {
+          10: "rgba(28, 28, 28, 0.1)",
+          20: "rgba(28, 28, 28, 0.2)",
+          30: "rgba(28, 28, 28, 0.3)",
+          40: "rgba(28, 28, 28, 0.4)",
+          50: "rgba(28, 28, 28, 0.5)",
+          60: "rgba(28, 28, 28, 0.6)",
+          70: "rgba(28, 28, 28, 0.7)",
+          80: "rgba(28, 28, 28, 0.8)",
+          90: "rgba(28, 28, 28, 0.9)",
+          100: "rgba(28, 28, 28, 1)",
+        },
       },
       boxShadow: {
         buttonShadow: "0 2px 8px 0 rgba(66, 48, 125, 0.3)",
@@ -106,8 +121,8 @@ module.exports = {
         "display-xs": "2rem",
         "text-xl": "1.75rem",
         "text-lg": "1.5rem",
-        "text-md": "1.5rem",
-        "text-sm": "1.25rem",
+        "text-md": "1.25rem",
+        "text-sm": "1rem",
         "text-xs": "1rem",
       },
     },
