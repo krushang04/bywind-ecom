@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import Orders from './pages/Orders';
 import Customers from './pages/Customers';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import Dashboard from './pages/dashboard/Dashboard';
 
 const App = () => {
   return (

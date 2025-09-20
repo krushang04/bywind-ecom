@@ -51,7 +51,8 @@ const Layout = () => {
             toggleTheme={toggleTheme}
           />
           <main className="flex-grow p-6 transition-all duration-300">
-            <div className="p-8 rounded-lg shadow-md bg-zinc-50 dark:bg-zinc-700 min-h-[calc(100vh-12rem)]">
+            {/* <div className="p-8 rounded-lg shadow-md bg-zinc-50 dark:bg-zinc-700 min-h-[calc(100vh-12rem)]"> */}
+            <div className='bg-white'>
               <Outlet />
             </div>
           </main>
