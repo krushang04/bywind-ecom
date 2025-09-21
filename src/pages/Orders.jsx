@@ -25,7 +25,7 @@ const Orders = () => {
 
   const sortedOrders = useMemo(() => {
     if (!isSorted) return filteredOrders;
-    
+
     return [...filteredOrders].sort((a, b) => {
       if (sortOrder === "asc") {
         return a.timeline - b.timeline;
@@ -86,12 +86,12 @@ const Orders = () => {
         <div className="flex items-center gap-3 ">
           <img src={Add} alt="Add" />
           <img src={FunnelSimple} alt="sorting" />
-          <img 
-            src={ArrowsDownUp} 
-            alt="filter" 
-            className={`cursor-pointer transition-opacity ${isSorted ? 'opacity-100' : 'opacity-60 hover:opacity-100'}`}
+          <img
+            src={ArrowsDownUp}
+            alt="filter"
+            className={`cursor-pointer transition-opacity ${isSorted ? "opacity-100" : "opacity-60 hover:opacity-100"}`}
             onClick={handleSort}
-            title={`Sort by date ${isSorted ? (sortOrder === 'desc' ? '(Newest first)' : '(Oldest first)') : '(Click to sort)'}`}
+            title={`Sort by date ${isSorted ? (sortOrder === "desc" ? "(Newest first)" : "(Oldest first)") : "(Click to sort)"}`}
           />
         </div>
 
@@ -136,7 +136,7 @@ const Orders = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200 text-black-new-100 text-text-sm">
               {paginatedOrders.map((order, index) => (
-                <tr key={startIndex + index} className="hover:bg-[#F7F9FB] transition-colors border-b border-[#1C1C1C0D]">
+                <tr key={startIndex + index} className="hover:bg-[#F7F9FB] transition-colors border-b border-black-new-5">
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap">
                     <input
                       type="checkbox"
@@ -192,7 +192,7 @@ const Orders = () => {
         </div>
 
         {/* Pagination */}
-        <div className="bg-white px-4 py-3 border-t border-[#1C1C1C0D]  sm:px-6">
+        <div className="bg-white px-4 py-3 border-t border-black-new-5  sm:px-6">
           <div className="flex items-center justify-center sm:justify-end">
             <nav className="flex items-center space-x-1">
               <button
@@ -209,7 +209,7 @@ const Orders = () => {
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`px-3 py-2 text-text-sm font-medium rounded-md text-black-new-100 ${currentPage === page ? "bg-[#1C1C1C0D] " : " hover:bg-[#1C1C1C0D]"}`}
+                  className={`px-3 py-2 text-text-sm font-medium rounded-md text-black-new-100 ${currentPage === page ? "bg-black-new-5 " : " hover:bg-black-new-5"}`}
                 >
                   {page}
                 </button>

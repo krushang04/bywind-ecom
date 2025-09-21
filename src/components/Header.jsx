@@ -37,7 +37,7 @@ const Header = ({ toggleLeftSidebar, isLeftSidebarOpen, toggleRightSidebar, isRi
     {/* Right side - Search and Utility Icons */}
     <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-5">
       <div className="relative">
-        <div className="flex items-center bg-[#1C1C1C0D] rounded-lg px-2 sm:px-3 py-1 w-32 sm:w-48 md:w-64 lg:w-40">
+        <div className="flex items-center bg-black-new-5 rounded-lg px-2 sm:px-3 py-1 w-32 sm:w-48 md:w-64 lg:w-40">
           <img src={Search} className="mr-2 sm:mr-3" alt="search" />
           <input type="text" placeholder="Search" className="bg-transparent w-full text-black-new-100 placeholder-black-new-20 outline-none flex-1 text-xs sm:text-sm" />
           <span className="text-text-xs text-gray-400 ml-1 sm:ml-2 hidden sm:inline">⌘/</span>

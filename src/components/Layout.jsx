@@ -3,15 +3,16 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
+import { useTheme } from "../context/ThemeContext";
 
 const Layout = () => {
   const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
   const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
-  const [theme, setTheme] = useState("light");
+
+  const { theme, toggleTheme } = useTheme();
 
   const toggleLeftSidebar = () => setIsLeftSidebarOpen(!isLeftSidebarOpen);
   const toggleRightSidebar = () => setIsRightSidebarOpen(!isRightSidebarOpen);
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,9 +59,7 @@ const Layout = () => {
         </div>
 
         {/* Right Sidebar - Responsive behavior */}
-        {isRightSidebarOpen && (
-          <RightSidebar isOpen={isRightSidebarOpen} toggleSidebar={toggleRightSidebar} />
-        )}
+        {isRightSidebarOpen && <RightSidebar isOpen={isRightSidebarOpen} toggleSidebar={toggleRightSidebar} />}
       </div>
     </div>
   );

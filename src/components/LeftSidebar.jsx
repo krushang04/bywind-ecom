@@ -8,7 +8,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       fixed top-0 left-0 z-40 w-[212px] bg-new-black-10 shadow-xl
       lg:relative lg:translate-x-0 lg:w-[212px] lg:shrink-0 lg:z-auto
       transform transition-transform duration-300 ease-in-out
-      dark:bg-zinc-800 h-full overflow-y-auto px-4 py-5 space-y-4
+      dark:bg-black-new-100 h-full overflow-y-auto px-4 py-5 space-y-4
       ${isOpen ? "translate-x-0" : "-translate-x-full"} space-y-4
     `}
   >
@@ -23,13 +23,13 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
     </div>
     <div>
       <div className="flex gap-1">
-        <div className="text-text-md text-black-new-40 dark:text-white py-1 px-2">Favorites</div>
-        <div className="text-text-md text-black-new-20 dark:text-white py-1 px-2">Recently</div>
+        <div className="text-text-md text-black-new-40 dark:text-white-new-40 py-1 px-2">Favorites</div>
+        <div className="text-text-md text-black-new-20 dark:text-white-new-20 py-1 px-2">Recently</div>
       </div>
-      <ul className="list-disc pl-5 text-black-new-20">
+      <ul className="list-disc pl-5 text-black-new-20 dark:text-white-new-20">
         {favEnums.map((item) => (
           <li key={item.key}>
-            <div className="text-text-md text-black-new-100 dark:text-white py-1 px-2">{item.label}</div>
+            <div className="text-text-md text-black-new-100 dark:white-new-100 py-1 px-2">{item.label}</div>
           </li>
         ))}
       </ul>
@@ -39,7 +39,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       <div className="text-text-md text-black-new-40 py-1 px-3 space-y-1">Dashboard</div>
       {dashboardEnums.map((item) => {
         return (
-          <div key={item.key} className={`text-text-md text-black-new-100 pr-2 py-1 flex items-center gap-1 mt-1 ${item.isHighlighted ? "bg-[#1C1C1C0D] rounded-lg" : ""}`}>
+          <div key={item.key} className={`text-text-md text-black-new-100 pr-2 py-1 flex items-center gap-1 mt-1 ${item.isHighlighted ? "bg-black-new-5 rounded-lg" : ""}`}>
             {item.isHighlighted ? (
               <div className="h-4 w-4">
                 <div className="bg-[#1C1C1C] rounded-lg w-1 h-full"></div>
