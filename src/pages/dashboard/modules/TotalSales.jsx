@@ -18,11 +18,11 @@ const TotalSales = () => {
   );
 
   return (
-    <div className="w-full h-full p-6 rounded-xl bg-[#F7F9FB] dark:bg-white-new-5 text-black-new-100 dark:text-white-new-100 space-y-4">
-      <div className="text-text-md font-semibold">Total Sales</div>
+    <div className="w-full h-[348px] lg:h-full p-6 rounded-xl bg-[#F7F9FB] dark:bg-white-new-5 text-black-new-100 dark:text-white-new-100 flex flex-col">
+      <div className="text-text-md font-semibold mb-2">Total Sales</div>
 
       {/* Pie Chart */}
-      <div className="flex justify-center flex-1">
+      <div className="flex justify-center items-center flex-1">
         <CustomPieChart data={salesData} />
       </div>
     </div>

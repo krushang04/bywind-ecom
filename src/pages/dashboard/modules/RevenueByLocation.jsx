@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { useTheme } from "../../../context/ThemeContext";
 
@@ -12,13 +12,21 @@ const RevenueByLocation = () => {
 
   const { theme } = useTheme();
 
+  const [mapHeight, setMapHeight] = useState(() => (typeof window !== "undefined" && window.innerWidth < 1024 ? 120 : 220));
+
+  useEffect(() => {
+    const onResize = () => setMapHeight(window.innerWidth < 1024 ? 200 : 220);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   return (
     <div className="rounded-xl p-6 shadow-sm bg-[#F7F9FB] dark:bg-white-new-5 space-y-4">
       {/* Title */}
       <div className="text-text-md font-semibold text-black-new-100 dark:text-white-new-100 text-center">Revenue by Location</div>
 
       {/* Map Section */}
-      <div className="mb-6">
+      <div className="mb-6" style={{ height: mapHeight }}>
         <ComposableMap
           projection="geoEqualEarth"
           projectionConfig={{
@@ -26,8 +34,8 @@ const RevenueByLocation = () => {
             center: [20, 20],
           }}
           width={400}
-          height={220}
-          style={{ width: "100%", height: "auto" }}
+          height={mapHeight}
+          style={{ width: "100%", height: "100%" }}
         >
           <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
             {({ geographies }) =>
