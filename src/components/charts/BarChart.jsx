@@ -1,5 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
 import { useTheme } from "../../context/ThemeContext";
+import SectionCard from "../common/SectionCard";
+import { getChartColors } from "../../utils/chartTheme";
 
 const data = [
   {
@@ -35,12 +37,11 @@ const data = [
 ];
 
 const ProjectionsVsActualsChart = () => {
-  // Check if dark mode is active
   const { theme } = useTheme();
+  const colors = getChartColors(theme);
 
   return (
-    <div className="w-full bg-[#F7F9FB] dark:bg-white-new-5 p-4 rounded-lg shadow-sm h-full">
-      <div className="text-text-md font-semibold text-black-new-100 dark:text-white mb-4">Projections vs Actuals</div>
+    <SectionCard title="Projections vs Actuals" className="h-full">
       <div className="w-full h-[248px] lg:h-[180px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -53,22 +54,22 @@ const ProjectionsVsActualsChart = () => {
             }}
             barCategoryGap="30%"
           >
-            <CartesianGrid strokeDasharray="none" stroke={theme === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(28, 28, 28, 0.05)"} horizontal={true} vertical={false} />
+            <CartesianGrid strokeDasharray="none" stroke={colors.grid} horizontal={true} vertical={false} />
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fill: theme === "dark" ? "rgba(255, 255, 255, 0.4)" : "rgba(28, 28, 28, 0.4)", fontSize: 12, fontWeight: 400 }}
+              tick={{ fill: colors.axis, fontSize: 12, fontWeight: 400 }}
               tickFormatter={(value) => `${value}M`}
               domain={[0, 30]}
               ticks={[0, 10, 20, 30]}
               dx={0}
               width={40}
             />
-            <Bar dataKey="actuals" stackId="a" fill={theme === "dark" ? "#6B7280" : "#A8C5DA"} radius={[0, 0, 0, 0]} />
+            <Bar dataKey="actuals" stackId="a" fill={theme === "dark" ? "#6B7280" : colors.secondary} radius={[0, 0, 0, 0]} />
             <Bar dataKey="projections" stackId="a" fill={theme === "dark" ? "#374151" : "#A8C5DA80"} radius={[5, 5, 0, 0]} />
             <XAxis
               dataKey="month"
-              axisLine={{ stroke: theme === "dark" ? "rgba(255, 255, 255, 0.05)" : "rgba(28, 28, 28, 0.05)", strokeWidth: 1 }}
+              axisLine={{ stroke: colors.axisLine, strokeWidth: 1 }}
               tickLine={false}
               tick={{ fill: "#94a3b8", fontSize: 12, fontWeight: 400 }}
               dy={5}
@@ -76,7 +77,7 @@ const ProjectionsVsActualsChart = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </SectionCard>
   );
 };
 

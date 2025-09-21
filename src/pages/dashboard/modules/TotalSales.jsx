@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import CustomPieChart from "../../../components/charts/DonutChart";
 import { useTheme } from "../../../context/ThemeContext";
+import SectionCard from "../../../components/common/SectionCard";
 
 const TotalSales = () => {
   const { theme } = useTheme();
@@ -18,14 +19,12 @@ const TotalSales = () => {
   );
 
   return (
-    <div className="w-full h-[348px] lg:h-full p-6 rounded-xl bg-[#F7F9FB] dark:bg-white-new-5 text-black-new-100 dark:text-white-new-100 flex flex-col">
-      <div className="text-text-md font-semibold mb-2">Total Sales</div>
-
+    <SectionCard title="Total Sales" className="w-full h-[348px] lg:h-full flex flex-col">
       {/* Pie Chart */}
       <div className="flex justify-center items-center flex-1">
         <CustomPieChart data={salesData} />
       </div>
-    </div>
+    </SectionCard>
   );
 };
 

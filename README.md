@@ -1,3 +1,75 @@
+# ByWind eCommerce Dashboard
+
+This project is a React-based dashboard with a modular and reusable component architecture. The codebase has been refactored to follow DRY principles, improve accessibility, and standardize UI patterns.
+
+## Project Structure (key paths)
+
+```
+src/
+  components/
+    common/
+      SectionCard.jsx        # Reusable panel wrapper for consistent layout
+    charts/
+      BarChart.jsx           # Uses centralized chart theming
+      LineBar.jsx            # Uses centralized chart theming
+      DonutChart.jsx
+  context/
+    ThemeContext.jsx         # App theme with hook `useTheme()`
+  pages/
+    dashboard/
+      Dashboard.jsx
+      modules/
+        MetricsCards.jsx
+        ProductTable.jsx     # Uses shared currency formatter + SectionCard
+        RevenueByLocation.jsx# Wrapped with SectionCard
+        TotalSales.jsx       # Wrapped with SectionCard
+  utils/
+    chartTheme.js            # Centralized Recharts colors per theme
+    formatters.js            # `formatCurrency()` util
+    SidebarUtils.js, ...
+```
+
+## Reusability and Best Practices
+
+- Section containers now use `src/components/common/SectionCard.jsx` for consistent padding, colors, and headings.
+- Charts use `src/utils/chartTheme.js` so axis/grid/tick colors stay consistent across themes.
+- Currency formatting centralized in `src/utils/formatters.js`.
+- Components aim to be presentational and composable; heavy logic can be moved to hooks if needed.
+
+## Accessibility
+
+- `SectionCard` exposes `aria-label` when `title` is a string.
+- Keyboard and screen-reader friendly markup; keep headings as text where possible.
+
+## Development
+
+1. Install dependencies
+   ```bash
+   npm install
+   ```
+2. Start dev server
+   ```bash
+   npm start
+   ```
+
+## Build
+
+```bash
+npm run build
+```
+
+## Deployment
+
+This repo includes a `netlify.toml` for simple Netlify deploys:
+
+- Build command: `npm run build`
+- Publish directory: `build`
+- SPA routing: redirect all to `/index.html`
+
+You can also deploy to Vercel or GitHub Pages using the standard CRA approach.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
