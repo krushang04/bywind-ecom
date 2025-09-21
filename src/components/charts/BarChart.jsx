@@ -41,7 +41,7 @@ const ProjectionsVsActualsChart = () => {
   return (
     <div className="w-full bg-[#F7F9FB] dark:bg-white-new-5 p-4 rounded-lg shadow-sm h-full">
       <div className="text-text-md font-semibold text-black-new-100 dark:text-white mb-4">Projections vs Actuals</div>
-      <div className="w-full" style={{ height: "188px" }}>
+      <div className="w-full" style={{ height: "180px" }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}

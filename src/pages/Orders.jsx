@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { ordersData } from "../utils/OrderDataUtils";
+import { ordersData, getStatusColor } from "../utils/OrderDataUtils";
 import { useTheme } from "../context/ThemeContext";
 import getSvgColor from "../utils/getSvgColor";
 
@@ -10,11 +10,7 @@ const Orders = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("desc");
   const [isSorted, setIsSorted] = useState(false);
-  const [allOrders, setAllOrders] = useState([]);
-
-  useEffect(() => {
-    setAllOrders([...ordersData(theme)]);
-  }, [theme]);
+  const [allOrders] = useState(ordersData);
 
   const filteredOrders = allOrders.filter(
     (order) =>
@@ -214,8 +210,8 @@ const Orders = () => {
                   </td>
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="w-1.5 h-1.5 rounded-full mr-2" style={{ background: order.status.color }}></div>
-                      <span style={{ color: order.status.color }}>{order.status.text}</span>
+                      <div className="w-1.5 h-1.5 rounded-full mr-2" style={{ background: getStatusColor(theme, order.status.text) }}></div>
+                      <span style={{ color: getStatusColor(theme, order.status.text) }}>{order.status.text}</span>
                     </div>
                   </td>
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap">

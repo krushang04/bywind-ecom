@@ -48,7 +48,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => (
           >
             {item.isHighlighted ? (
               <div className="h-4 w-4">
-                <div className="bg-[#1C1C1C] rounded-lg w-1 h-full"></div>
+                <div className="bg-black-new-100 dark:bg-[#C6C7F8] rounded-lg w-1 h-full"></div>
               </div>
             ) : (
               <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1C1C1C33">
