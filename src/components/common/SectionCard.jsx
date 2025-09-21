@@ -6,10 +6,10 @@ import React from "react";
 // - className: string (extra classes for outer wrapper)
 // - headerRight: ReactNode (optional right-aligned content in header)
 // - children: content body
-export default function SectionCard({ title, headerRight = null, className = "", children }) {
+export default function SectionCard({ title, headerRight = null, className = "", bodyClassName = "", children }) {
   return (
     <section
-      className={`w-full rounded-lg bg-[#F7F9FB] dark:bg-white-new-5 text-black-new-100 dark:text-white-new-100 ${className}`}
+      className={`w-full rounded-lg bg-[#F7F9FB] dark:bg-white-new-5 text-black-new-100 dark:text-white-new-100 flex flex-col ${className}`}
       aria-label={typeof title === "string" ? title : undefined}
     >
       {(title || headerRight) && (
@@ -18,7 +18,7 @@ export default function SectionCard({ title, headerRight = null, className = "",
           {headerRight}
         </header>
       )}
-      <div className="p-6 pt-4">{children}</div>
+      <div className={`p-6 pt-4 ${bodyClassName}`}>{children}</div>
     </section>
   );
 }

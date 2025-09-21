@@ -63,9 +63,10 @@ const LineBarChart = () => {
         </div>
       }
       className="flex flex-col h-full"
+      bodyClassName="flex-1"
     >
-      <div className="w-full">
-        <ResponsiveContainer width="100%" height={260}>
+      <div className="w-full" style={{ height: "420px" }}>
+        <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
             margin={{
@@ -76,13 +77,7 @@ const LineBarChart = () => {
             }}
           >
             <CartesianGrid stroke={colors.grid} horizontal={true} vertical={false} />
-            <XAxis
-              dataKey="month"
-              axisLine={{ stroke: colors.axisLine, strokeWidth: 1 }}
-              tickLine={false}
-              tick={{ fill: colors.axis, fontSize: 12, fontWeight: 400 }}
-              dy={10}
-            />
+            <XAxis dataKey="month" axisLine={{ stroke: colors.axisLine, strokeWidth: 1 }} tickLine={false} tick={{ fill: colors.axis, fontSize: 12, fontWeight: 400 }} dy={10} />
             <YAxis
               axisLine={false}
               tickLine={false}
