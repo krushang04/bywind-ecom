@@ -6,7 +6,7 @@ import getSvgColor from "../utils/getSvgColor";
 const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => (
   <aside
     className={`
-      fixed top-0 left-0 z-40 w-[212px] bg-new-black-10 shadow-xl
+      fixed top-0 left-0 z-40 w-[212px] bg-white-new-100 shadow-xl
       lg:relative lg:translate-x-0 lg:w-[212px] lg:shrink-0 lg:z-auto
       transform transition-transform duration-300 ease-in-out
       dark:bg-black-new-100 h-full overflow-y-auto px-4 py-5 space-y-4
@@ -18,9 +18,9 @@ const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => (
         <img src={ByWindLogo} alt="ByWind Logo" className="w-6 h-6" />
         <div className="text-text-md text-black-2 dark:text-white mt-1">ByWind</div>
       </div>
-      <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-black-new-5 dark:hover:bg-white-new-5 transition-colors" aria-label="Close left sidebar">
+      {/* <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-black-new-5 dark:hover:bg-white-new-5 transition-colors" aria-label="Close left sidebar">
         <XIcon />
-      </button>
+      </button> */}
     </div>
     <div>
       <div className="flex gap-1">
