@@ -40,11 +40,11 @@ const ContactAvatar = ({ avatar }) => (
 const RightSidebar = ({ isOpen, toggleSidebar }) => (
   <aside
     className={`
-      fixed top-0 right-0 z-40 w-[17.5rem] sm:w-80 bg-new-black-10 shadow-xl border-l
+      fixed top-0 right-0 z-40 w-[17.5rem] sm:w-80 bg-white-new-100 shadow-xl border-l border-black-new-10 dark:border-white-new-10
       lg:relative lg:w-80 lg:shrink-0 lg:z-auto
       transform transition-transform duration-300 ease-in-out
       h-full overflow-y-auto p-5
-      translate-x-0
+      translate-x-0 dark:bg-black-new-100
     `}
   >
     {/* Header */}
@@ -62,7 +62,7 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => (
     <div className="flex flex-col gap-6">
       {/* Notifications Section */}
       <div className="flex flex-col gap-2">
-        <div className="text-text-md font-semibold text-black-new-100 py-2 px-1 flex items-center">Notifications</div>
+        <div className="text-text-md font-semibold text-black-new-100 dark:text-white-new-100 py-2 px-1 flex items-center">Notifications</div>
         <div className="space-y-4">
           {notificationsData.map((notification) => (
             <div key={notification.key} className="flex items-start space-x-2 p-1">
@@ -70,8 +70,8 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => (
                 <NotificationIcon iconType={notification.icon} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-text-md text-black-new-100">{notification.text}</p>
-                <p className="text-text-sm text-black-new-40">{notification.timestamp}</p>
+                <p className="text-text-md text-black-new-100 dark:text-white-new-100">{notification.text}</p>
+                <p className="text-text-sm text-black-new-40 dark:text-white-new-40">{notification.timestamp}</p>
               </div>
             </div>
           ))}
@@ -80,18 +80,18 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => (
 
       {/* Activities Section */}
       <div className="flex flex-col gap-2">
-        <div className="text-text-md font-semibold text-black-new-100 py-2 px-1 flex items-center">Activities</div>
+        <div className="text-text-md font-semibold text-black-new-100 dark:text-white-new-100 py-2 px-1 flex items-center">Activities</div>
         <div className="relative">
           {/* Timeline connector line */}
-          <div className="absolute left-4 top-8 bottom-10 w-px bg-black-new-10"></div>
+          <div className="absolute left-4 top-8 bottom-10 w-px bg-black-new-10 dark:bg-white-new-10"></div>
 
           <div className="space-y-4">
             {activitiesData.map((activity) => (
               <div key={activity.key} className="flex items-start space-x-2">
                 <ActivityAvatar avatar={activity.avatar} />
                 <div className="flex-1 min-w-0">
-                  <p className="text-text-md text-black-new-100">{activity.text}</p>
-                  <p className="text-text-sm text-black-new-40">{activity.timestamp}</p>
+                  <p className="text-text-md text-black-new-100 dark:text-white-new-100">{activity.text}</p>
+                  <p className="text-text-sm text-black-new-40 dark:text-white-new-40">{activity.timestamp}</p>
                 </div>
               </div>
             ))}
@@ -101,12 +101,12 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => (
 
       {/* Contacts Section */}
       <div className="flex flex-col gap-2">
-        <div className="text-text-md font-semibold text-black-new-100 py-2 px-1 flex items-center">Contacts</div>
+        <div className="text-text-md font-semibold text-black-new-100 dark:text-white-new-100 py-2 px-1 flex items-center">Contacts</div>
         <div className="space-y-2">
           {contactsData.map((contact) => (
             <div key={contact.key} className="flex items-center space-x-2 py-1 px-1">
               <ContactAvatar avatar={contact.avatar} />
-              <span className="text-sm text-gray-700">{contact.name}</span>
+              <span className="text-sm text-black-new-100 dark:text-white-new-100">{contact.name}</span>
             </div>
           ))}
         </div>

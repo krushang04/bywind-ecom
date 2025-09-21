@@ -25,7 +25,7 @@ export default function CustomPieChart({ data }) {
   return (
     <div className="flex flex-col items-center h-full">
       <PieChart width={160} height={160}>
-        <Pie data={chartData} dataKey="value" cx="50%" cy="50%" innerRadius={40} outerRadius={65} paddingAngle={8}>
+        <Pie data={chartData} dataKey="value" cx="50%" cy="50%" innerRadius={40} outerRadius={65} paddingAngle={8} cornerRadius={50}>
           {chartData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}

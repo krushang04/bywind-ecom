@@ -1,10 +1,14 @@
 import React from "react";
 import ArrowRise from "../../../assets/ArrowRise.png";
 import ArrowFall from "../../../assets/ArrowFall.png";
+import { useTheme } from "../../../context/ThemeContext";
 
-const MetricCard = React.memo(({ title, value, change, isPositive, bgColor }) => (
-  <div className={`p-4 sm:p-6 rounded-lg hover:shadow-md transition-shadow duration-200 text-black-new-100`} style={{ background: bgColor }}>
-    <h3 className="text-text-md font-semibold text-gray-600 mb-3 truncate">{title}</h3>
+const MetricCard = React.memo(({ title, value, change, isPositive, bgColor, textColor }) => (
+  <div
+    className={`p-4 sm:p-6 rounded-lg hover:shadow-md transition-shadow duration-200 text-black-new-100 dark:text-white-new-100`}
+    style={{ background: bgColor, color: textColor }}
+  >
+    <h3 className="text-text-md font-semibold mb-3 truncate">{title}</h3>
     <div className="flex items-center justify-between gap-2">
       <p className="text-display-xs font-semibold truncate flex-1 min-w-0">{value}</p>
       <div className="flex items-center space-x-1 flex-shrink-0">
@@ -18,6 +22,7 @@ const MetricCard = React.memo(({ title, value, change, isPositive, bgColor }) =>
 MetricCard.displayName = "MetricCard";
 
 const MetricsCards = () => {
+  const { theme } = useTheme();
   const metrics = [
     {
       id: "customers",
@@ -27,6 +32,7 @@ const MetricsCards = () => {
       isPositive: true,
       isHighlighted: true,
       bgColor: "#E3F5FF",
+      textColor: "#1C1C1C",
     },
     {
       id: "orders",
@@ -34,7 +40,8 @@ const MetricsCards = () => {
       value: "1,219",
       change: "0.03%",
       isPositive: false,
-      bgColor: "#F7F9FB",
+      bgColor: theme === "dark" ? "#FFFFFF0D" : "#F7F9FB",
+      textColor: theme === "dark" ? "#FFFFFF" : "#1C1C1C",
     },
     {
       id: "revenue",
@@ -42,7 +49,8 @@ const MetricsCards = () => {
       value: "$695",
       change: "15.03%",
       isPositive: true,
-      bgColor: "#F7F9FB",
+      bgColor: theme === "dark" ? "#FFFFFF0D" : "#F7F9FB",
+      textColor: theme === "dark" ? "#FFFFFF" : "#1C1C1C",
     },
     {
       id: "growth",
@@ -51,13 +59,22 @@ const MetricsCards = () => {
       change: "6.08%",
       isPositive: true,
       bgColor: "#E5ECF6",
+      textColor: "#1C1C1C",
     },
   ];
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       {metrics.map((metric) => (
-        <MetricCard key={metric.id} title={metric.title} value={metric.value} change={metric.change} isPositive={metric.isPositive} bgColor={metric.bgColor} />
+        <MetricCard
+          key={metric.id}
+          title={metric.title}
+          value={metric.value}
+          change={metric.change}
+          isPositive={metric.isPositive}
+          bgColor={metric.bgColor}
+          textColor={metric.textColor}
+        />
       ))}
     </div>
   );

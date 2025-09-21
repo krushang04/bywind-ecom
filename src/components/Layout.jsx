@@ -25,6 +25,16 @@ const Layout = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Keep <html> element in sync with current theme so `dark:` classes work globally
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [theme]);
+
   return (
     <div className={`min-h-screen font-sans antialiased transition-colors duration-300 ${theme === "dark" ? "dark" : ""}`}>
       <div className="flex h-screen overflow-hidden">
@@ -49,12 +59,13 @@ const Layout = () => {
             isLeftSidebarOpen={isLeftSidebarOpen}
             toggleRightSidebar={toggleRightSidebar}
             isRightSidebarOpen={isRightSidebarOpen}
+            theme={theme}
             toggleTheme={toggleTheme}
           />
-          <main className="flex-1 overflow-y-auto p-6 transition-all duration-300">
-            <div className="bg-white">
-              <Outlet />
-            </div>
+          <main className="flex-1 overflow-y-auto p-6 transition-all duration-300 dark:bg-black-new-100">
+            {/* <div className="bg-white dark:bg-black-new-100"> */}
+            <Outlet />
+            {/* </div> */}
           </main>
         </div>
 

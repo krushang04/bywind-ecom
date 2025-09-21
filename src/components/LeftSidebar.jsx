@@ -9,7 +9,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       lg:relative lg:translate-x-0 lg:w-[212px] lg:shrink-0 lg:z-auto
       transform transition-transform duration-300 ease-in-out
       dark:bg-black-new-100 h-full overflow-y-auto px-4 py-5 space-y-4
-      ${isOpen ? "translate-x-0" : "-translate-x-full"} space-y-4
+      ${isOpen ? "translate-x-0" : "-translate-x-full"} space-y-4 border dark:border-white-new-10 border-black-new-10
     `}
   >
     <div className="flex justify-between items-center">
@@ -17,7 +17,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
         <img src={ByWindLogo} alt="ByWind Logo" className="w-6 h-6" />
         <div className="text-text-md text-black-2 dark:text-white mt-1">ByWind</div>
       </div>
-      <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors" aria-label="Close left sidebar">
+      <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-black-new-5 dark:hover:bg-white-new-5 transition-colors" aria-label="Close left sidebar">
         <XIcon />
       </button>
     </div>
@@ -29,17 +29,22 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       <ul className="list-disc pl-5 text-black-new-20 dark:text-white-new-20">
         {favEnums.map((item) => (
           <li key={item.key}>
-            <div className="text-text-md text-black-new-100 dark:white-new-100 py-1 px-2">{item.label}</div>
+            <div className="text-text-md text-black-new-100 dark:text-white-new-100 py-1 px-2">{item.label}</div>
           </li>
         ))}
       </ul>
     </div>
 
     <div>
-      <div className="text-text-md text-black-new-40 py-1 px-3 space-y-1">Dashboard</div>
+      <div className="text-text-md text-black-new-40 dark:text-white-new-40 py-1 px-3 space-y-1">Dashboard</div>
       {dashboardEnums.map((item) => {
         return (
-          <div key={item.key} className={`text-text-md text-black-new-100 pr-2 py-1 flex items-center gap-1 mt-1 ${item.isHighlighted ? "bg-black-new-5 rounded-lg" : ""}`}>
+          <div
+            key={item.key}
+            className={`text-text-md text-black-new-100 dark:text-white-new-100 pr-2 py-1 flex items-center gap-1 mt-1 ${
+              item.isHighlighted ? "bg-black-new-5 dark:bg-white-new-5 rounded-lg" : ""
+            }`}
+          >
             {item.isHighlighted ? (
               <div className="h-4 w-4">
                 <div className="bg-[#1C1C1C] rounded-lg w-1 h-full"></div>
@@ -57,11 +62,11 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       })}
     </div>
     <div className="space-y-1">
-      <div className="text-text-md text-black-new-40 py-1 px-3 space-y-1">Pages</div>
+      <div className="text-text-md text-black-new-40 dark:text-white-new-40 py-1 px-3 space-y-1">Pages</div>
       {pagesEnums.map((item) => {
         return (
           <div key={item.key} className="space-y-1">
-            <div className="text-text-md text-black-new-100 px-2 py-1 flex items-center gap-1 mt-1">
+            <div className="text-text-md text-black-new-100 dark:text-white-new-100 px-2 py-1 flex items-center gap-1 mt-1">
               {item.hasChildren ? (
                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1C1C1C33">
                   <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
@@ -79,7 +84,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
             {item.hasChildren && item.children && (
               <div className="ml-12 space-y-1">
                 {item.children.map((child) => (
-                  <div key={child.key} className="text-text-md text-black-new-100 px-2 py-1">
+                  <div key={child.key} className="text-text-md text-black-new-100 dark:text-white-new-100 px-2 py-1">
                     {child.label}
                   </div>
                 ))}

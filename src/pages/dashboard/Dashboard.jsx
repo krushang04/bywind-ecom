@@ -8,7 +8,7 @@ import TotalSales from "./modules/TotalSales";
 
 const Dashboard = () => (
   <div className="space-y-7">
-    <div className="px-2 py-1 font-semibold text-text-md">eCommerce</div>
+    <div className="px-2 py-1 font-semibold text-text-md dark:text-white-new-100">eCommerce</div>
 
     {/* First container */}
     <div className="flex flex-col lg:flex-row gap-6">

@@ -43,8 +43,8 @@ const ProductTable = ({ products, title = "Top Selling Products", loading = fals
 
   if (loading) {
     return (
-      <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">{title}</h2>
+      <div className="bg-white dark:bg-white-new-5 dark:text-white-new-100 p-6 rounded-lg shadow-md">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white-new-100">{title}</h2>
         <div className="animate-pulse space-y-3">
           {[...Array(5)].map((_, i) => (
             <div key={i} className="flex space-x-4">
@@ -60,21 +60,21 @@ const ProductTable = ({ products, title = "Top Selling Products", loading = fals
   }
 
   return (
-    <div className="bg-[#F7F9FB] dark:bg-zinc-800 p-6 rounded-lg h-full flex flex-col space-y-1">
-      <div className="text-text-md font-semibold text-black-new-100 dark:text-white">{title}</div>
+    <div className="bg-[#F7F9FB] dark:bg-white-new-5 p-6 rounded-lg h-full flex flex-col space-y-1">
+      <div className="text-text-md font-semibold text-black-new-100 dark:text-white-new-100">{title}</div>
       <div className="overflow-x-auto flex-1">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-black-new-20 dark:border-gray-700 text-black-new-40 text-left text-text-sm">
-              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Name</th>
-              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Price</th>
-              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Quantity</th>
-              <th className="py-2 text-xs font-medium dark:text-gray-400 tracking-wider">Amount</th>
+            <tr className="border-b border-black-new-20 dark:border-white-new-20 text-black-new-40 dark:text-white-new-40 text-left text-text-sm">
+              <th className="py-2 text-xs font-medium tracking-wider">Name</th>
+              <th className="py-2 text-xs font-medium tracking-wider">Price</th>
+              <th className="py-2 text-xs font-medium tracking-wider">Quantity</th>
+              <th className="py-2 text-xs font-medium tracking-wider">Amount</th>
             </tr>
           </thead>
           <tbody>
             {displayProducts.map((product, index) => (
-              <tr key={index} className=" text-black-new-100 text-text-sm dark:text-gray-400">
+              <tr key={index} className=" text-black-new-100 dark:text-white-new-100 text-text-sm">
                 <td className="py-2">{product.name}</td>
                 <td className="py-2">{formatCurrency(product.price)}</td>
                 <td className="py-2">{product.quantity}</td>

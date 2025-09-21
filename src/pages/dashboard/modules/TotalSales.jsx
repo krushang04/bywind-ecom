@@ -18,7 +18,7 @@ const TotalSales = () => {
   );
 
   return (
-    <div className="w-full h-full p-6 rounded-xl bg-[#F7F9FB] dark:bg-[#000000] text-black-new-100 dark:text-white space-y-4">
+    <div className="w-full h-full p-6 rounded-xl bg-[#F7F9FB] dark:bg-white-new-5 text-black-new-100 dark:text-white-new-100 space-y-4">
       <div className="text-text-md font-semibold">Total Sales</div>
 
       {/* Pie Chart */}

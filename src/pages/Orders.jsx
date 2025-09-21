@@ -6,15 +6,20 @@ import Search from "../assets/Search.png";
 import { ordersData } from "../utils/OrderDataUtils";
 import DotsThreeOutlineVertical from "../assets/DotsThreeOutlineVertical.png";
 import CalendarBlank from "../assets/CalendarBlank.png";
+import { useTheme } from "../context/ThemeContext";
 
 const Orders = () => {
+  const { theme } = useTheme();
   const [selectedRows, setSelectedRows] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("desc"); // 'asc' or 'desc'
   const [isSorted, setIsSorted] = useState(false);
+  const [allOrders, setAllOrders] = useState([]);
 
-  const allOrders = [...ordersData];
+  useEffect(() => {
+    setAllOrders([...ordersData(theme)]);
+  }, [theme]);
 
   const filteredOrders = allOrders.filter(
     (order) =>
@@ -73,16 +78,15 @@ const Orders = () => {
     setCurrentPage(page);
   };
 
-  // Reset to first page when search term changes
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm]);
 
   return (
-    <div className=" bg-white w-full flex flex-col gap-3">
-      <div className="text-text-md text-black-new-100 font-semibold px-2 py-1">Order List</div>
+    <div className="bg-white dark:bg-black-new-100 dark:text-white-new-100 w-full flex flex-col gap-3">
+      <div className="text-text-md text-black-new-100 dark:text-white-new-100 font-semibold px-2 py-1">Order List</div>
       {/* Header Section */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-2 bg-[#F7F9FB] rounded-lg">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 p-2 bg-black-new-5 dark:bg-white-new-5 rounded-lg">
         <div className="flex items-center gap-3 ">
           <img src={Add} alt="Add" />
           <img src={FunnelSimple} alt="sorting" />
@@ -98,31 +102,32 @@ const Orders = () => {
         {/* Search Bar */}
 
         <div className="relative">
-          <div className="flex items-center bg-[#FFFFFF66] border border-black-new-10 rounded-lg px-2 sm:px-3 py-1 w-32 sm:w-48 md:w-64 lg:w-40">
+          <div className="flex items-center bg-white-new-40 dark:bg-black-new-10 border border-black-new-10 dark:border-white-new-10 rounded-lg px-2 sm:px-3 py-1 w-32 sm:w-48 md:w-64 lg:w-40">
             <img src={Search} className="mr-2 sm:mr-3" alt="search" />
             <input
               type="text"
               placeholder="Search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-transparent w-full text-black-new-100 placeholder-black-new-20 outline-none flex-1 text-xs sm:text-text-sm"
+              className="bg-transparent w-full text-black-new-100 dark:text-white-new-100 placeholder-black-new-20 dark:placeholder-white-new-20 outline-none flex-1 text-xs sm:text-text-sm"
             />
           </div>
         </div>
       </div>
 
       {/* Table Section */}
-      <div className="bg-white rounded-lg overflow-hidden">
+      <div className="bg-white dark:bg-black-new-100 dark:text-white-new-100 rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className=" border-b border-black-new-20 text-black-new-40 text-text-sm font-normal">
+            <thead className=" border-b border-black-new-20 dark:border-white-new-20 text-black-new-40 dark:text-white-new-20 text-text-sm font-normal">
               <tr>
                 <th className="px-2 sm:px-3 py-2 text-left">
                   <input
                     type="checkbox"
                     checked={selectedRows.size === paginatedOrders.length && paginatedOrders.length > 0}
                     onChange={handleSelectAll}
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
+                    // className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
+                    className="w-4 h-4 rounded-xl text-[#C6C7F8] dark:border-white-new-40 bg-white dark:bg-black-new-100 border-black-new-40 focus:ring-blue-500 cursor-pointer"
                   />
                 </th>
                 <th className="px-2 sm:px-3 py-2 text-left font-normal tracking-wider">Order ID</th>
@@ -134,21 +139,21 @@ const Orders = () => {
                 <th className="px-2 sm:px-3 py-2 text-left font-normal tracking-wider">{/* Actions column */}</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200 text-black-new-100 text-text-sm">
+            <tbody className="bg-white dark:bg-black-new-100 divide-y  text-black-new-100 dark:text-white-new-100 text-text-sm">
               {paginatedOrders.map((order, index) => (
-                <tr key={startIndex + index} className="hover:bg-[#F7F9FB] transition-colors border-b border-black-new-5">
+                <tr key={startIndex + index} className="hover:bg-black-new-5 dark:hover:bg-white-new-5 transition-colors border-b border-black-new-5 dark:border-white-new-10">
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap">
                     <input
                       type="checkbox"
                       checked={selectedRows.has(startIndex + index)}
                       onChange={() => handleSelectRow(startIndex + index)}
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
+                      className="w-4 h-4 text-blue-600 dark:border-white-new-40 bg-white dark:bg-black-new-100 border-black-new-40 rounded focus:ring-blue-500 cursor-pointer"
                     />
                   </td>
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap  ">{order.id}</td>
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap">
                     <div className="flex items-center">
-                      <img className="h-8 w-8 rounded-full object-cover" src={order.user.avatar} alt={order.user.name} />
+                      <img className="h-6 w-6 rounded-full object-cover" src={order.user.avatar} alt={order.user.name} />
                       <div className="ml-3">
                         <div className=" ">{order.user.name}</div>
                       </div>
@@ -192,12 +197,12 @@ const Orders = () => {
         </div>
 
         {/* Pagination */}
-        <div className="bg-white px-4 py-3 border-t border-black-new-5  sm:px-6">
+        <div className="bg-white dark:bg-black-new-100 dark:text-white-new-100 px-4 py-3 border-t border-black-new-5 dark:border-white-new-5  sm:px-6">
           <div className="flex items-center justify-center sm:justify-end">
             <nav className="flex items-center space-x-1">
               <button
                 onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
-                className="p-2 text-gray-400 hover:text-black-new-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-2 text-gray-400 hover:text-black-new-100 dark:hover:text-white-new-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={currentPage === 1}
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,7 +214,9 @@ const Orders = () => {
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`px-3 py-2 text-text-sm font-medium rounded-md text-black-new-100 ${currentPage === page ? "bg-black-new-5 " : " hover:bg-black-new-5"}`}
+                  className={`px-3 py-2 text-text-sm font-medium rounded-md text-black-new-100 dark:text-white-new-100 ${
+                    currentPage === page ? "bg-black-new-5 dark:bg-white-new-5" : " hover:bg-black-new-5 dark:hover:bg-white-new-5"
+                  }`}
                 >
                   {page}
                 </button>
@@ -217,7 +224,7 @@ const Orders = () => {
 
               <button
                 onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
-                className="p-2 text-gray-400 hover:text-black-new-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-2 text-gray-400 hover:text-black-new-100 dark:hover:text-white-new-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={currentPage === totalPages}
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
