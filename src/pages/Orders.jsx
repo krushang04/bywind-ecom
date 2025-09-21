@@ -73,6 +73,8 @@ const Orders = () => {
     setCurrentPage(1);
   }, [searchTerm]);
 
+  const sortTooltip = !isSorted ? "Sort descending" : sortOrder === "desc" ? "Sort ascending" : "Sort descending";
+
   return (
     <div className="w-full flex flex-col gap-3 text-black-new-100 dark:text-white-new-100">
       <div className="text-text-md font-semibold px-2 py-1">Order List</div>
@@ -93,7 +95,18 @@ const Orders = () => {
             />
           </svg>
 
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={handleSort} className="cursor-pointer">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            onClick={handleSort}
+            className="cursor-pointer focus:outline-none"
+            aria-label={sortTooltip}
+            data-tooltip-id="header-tip"
+            data-tooltip-content={sortTooltip}
+          >
             <path
               d="M4.19194 13.3081C4.07473 13.1908 3.91576 13.125 3.75 13.125C3.58424 13.125 3.42527 13.1908 3.30806 13.3081C3.19085 13.4253 3.125 13.5842 3.125 13.75C3.125 13.9158 3.19085 14.0747 3.30806 14.1919L5.80806 16.6919C5.92527 16.8092 6.08424 16.875 6.25 16.875C6.41576 16.875 6.57473 16.8092 6.69194 16.6919L9.19171 14.1922C9.30892 14.075 9.375 13.9158 9.375 13.75C9.375 13.5842 9.30915 13.4253 9.19194 13.3081C9.07473 13.1908 8.91576 13.125 8.75 13.125C8.58424 13.125 8.42527 13.1908 8.30806 13.3081L6.25 15.3661L4.19194 13.3081Z"
               fill={getSvgColor(theme)}

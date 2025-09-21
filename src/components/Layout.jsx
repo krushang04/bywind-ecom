@@ -4,6 +4,8 @@ import Header from "./Header";
 import LeftSidebar from "./LeftSidebar";
 import RightSidebar from "./RightSidebar";
 import { useTheme } from "../context/ThemeContext";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Layout = () => {
   const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
@@ -38,6 +40,15 @@ const Layout = () => {
   return (
     <div className={`min-h-screen font-sans antialiased transition-colors duration-300 ${theme === "dark" ? "dark" : ""}`}>
       <div className="flex h-screen overflow-hidden bg-white dark:bg-black-new-100">
+        {/* Global tooltip instance to serve header tooltips */}
+        <ReactTooltip
+          id="header-tip"
+          place="bottom"
+          offset={8}
+          anchorSelect='[data-tooltip-id="header-tip"]'
+          positionStrategy="fixed"
+          style={{ zIndex: 9999 }}
+        />
         {/* Left Sidebar - Always visible on desktop */}
         <LeftSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} theme={theme} />
 

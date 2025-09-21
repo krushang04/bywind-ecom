@@ -15,6 +15,11 @@ const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => {
     }
   };
 
+  const getTooltip = (keyOrLabel) => {
+    const k = String(keyOrLabel || "").toLowerCase();
+    return k === "overview" || k === "projects" ? "Go to Orders" : "Go to Dashboard";
+  };
+
   return (
     <aside
       className={`
@@ -47,6 +52,10 @@ const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => {
               <button
                 onClick={() => handleNavigate(item.key || item.label)}
                 className="text-left w-full text-text-md text-black-new-100 dark:text-white-new-100 py-1 px-2 hover:bg-black-new-5 dark:hover:bg-white-new-5 rounded-md"
+                data-tooltip-id="header-tip"
+                data-tooltip-content={getTooltip(item.key || item.label)}
+                data-tooltip-place="right"
+                aria-label={getTooltip(item.key || item.label)}
               >
                 {item.label}
               </button>
@@ -65,6 +74,11 @@ const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => {
               className={`cursor-pointer text-text-md text-black-new-100 dark:text-white-new-100 pr-2 py-1 flex items-center gap-1 mt-1 ${
                 item.isHighlighted ? "bg-black-new-5 dark:bg-white-new-5 rounded-lg" : ""
               }`}
+              data-tooltip-id="header-tip"
+              data-tooltip-content={getTooltip(item.key || item.label)}
+              data-tooltip-place="right"
+              role="button"
+              aria-label={getTooltip(item.key || item.label)}
             >
               {item.isHighlighted ? (
                 <div className="h-4 w-4">
@@ -90,6 +104,11 @@ const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => {
               <div
                 onClick={() => handleNavigate(item.key || item.label)}
                 className="cursor-pointer text-text-md text-black-new-100 dark:text-white-new-100 px-2 py-1 flex items-center gap-1 mt-1"
+                data-tooltip-id="header-tip"
+                data-tooltip-content={getTooltip(item.key || item.label)}
+                data-tooltip-place="right"
+                role="button"
+                aria-label={getTooltip(item.key || item.label)}
               >
                 {item.hasChildren ? (
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -124,6 +143,11 @@ const LeftSidebar = ({ isOpen, toggleSidebar, theme }) => {
                       key={child.key}
                       onClick={() => handleNavigate(child.key || child.label)}
                       className="cursor-pointer text-text-md text-black-new-100 dark:text-white-new-100 px-2 py-1 hover:bg-black-new-5 dark:hover:bg-white-new-5 rounded-md"
+                      data-tooltip-id="header-tip"
+                      data-tooltip-content={getTooltip(child.key || child.label)}
+                      data-tooltip-place="right"
+                      role="button"
+                      aria-label={getTooltip(child.key || child.label)}
                     >
                       {child.label}
                     </div>

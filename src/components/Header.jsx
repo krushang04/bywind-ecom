@@ -9,8 +9,10 @@ const Header = ({ toggleLeftSidebar, isLeftSidebarOpen, toggleRightSidebar, isRi
       {/* Mobile menu toggle */}
       <button
         onClick={toggleLeftSidebar}
-        className="lg:hidden p-1.5 sm:p-2 rounded-md hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="lg:hidden p-1.5 sm:p-2 rounded-md hover:bg-gray-100 transition-colors duration-200 focus:outline-none"
         aria-label="Toggle left sidebar"
+        data-tooltip-id="header-tip"
+        data-tooltip-content="Toggle left sidebar"
       >
         {isLeftSidebarOpen ? <XIcon /> : <MenuIcon />}
       </button>
@@ -73,7 +75,19 @@ const Header = ({ toggleLeftSidebar, isLeftSidebarOpen, toggleRightSidebar, isRi
 
       {/* Utility Icons - Responsive spacing and sizing */}
       <div className="flex items-center space-x-1 sm:space-x-2">
-        <svg onClick={toggleTheme} className="cursor-pointer" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          onClick={toggleTheme}
+          className="cursor-pointer focus:outline-none rounded-md"
+          role="button"
+          aria-label="Toggle theme"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          data-tooltip-id="header-tip"
+          data-tooltip-content="Toggle theme"
+        >
           <path
             d="M14.375 10C14.375 10.8653 14.1184 11.7112 13.6377 12.4306C13.157 13.1501 12.4737 13.7108 11.6742 14.042C10.8748 14.3731 9.99515 14.4597 9.14648 14.2909C8.29781 14.1221 7.51826 13.7054 6.90641 13.0936C6.29456 12.4817 5.87788 11.7022 5.70907 10.8535C5.54026 10.0049 5.6269 9.12519 5.95803 8.32576C6.28916 7.52633 6.84992 6.84305 7.56938 6.36232C8.28885 5.88159 9.13471 5.625 10 5.625C11.1603 5.625 12.2731 6.08594 13.0936 6.90641C13.9141 7.72688 14.375 8.83968 14.375 10Z"
             fill={theme === "light" ? "#1C1C1C" : "white"}
@@ -97,7 +111,20 @@ const Header = ({ toggleLeftSidebar, isLeftSidebarOpen, toggleRightSidebar, isRi
           />
         </svg>
 
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer focus:outline-none"
+          onClick={toggleRightSidebar}
+          role="button"
+          aria-label="Open notifications"
+          data-tooltip-id="header-tip"
+          data-tooltip-content="Notifications"
+          tabIndex="0"
+        >
           <path
             d="M16.2501 15H3.75015C3.64076 14.9993 3.53345 14.97 3.43896 14.9149C3.34448 14.8597 3.26611 14.7808 3.2117 14.6859C3.15729 14.591 3.12874 14.4835 3.12891 14.3741C3.12907 14.2647 3.15795 14.1572 3.21265 14.0625C3.72749 13.1719 4.37515 10.9227 4.37515 8.125C4.37515 6.63316 4.96778 5.20242 6.02267 4.14752C7.07756 3.09263 8.5083 2.5 10.0001 2.5C11.492 2.5 12.9227 3.09263 13.9776 4.14752C15.0325 5.20242 15.6251 6.63316 15.6251 8.125C15.6251 10.9234 16.2736 13.1719 16.7892 14.0625C16.844 14.1574 16.8728 14.2649 16.8729 14.3745C16.873 14.484 16.8444 14.5916 16.7898 14.6865C16.7352 14.7815 16.6566 14.8604 16.5619 14.9154C16.4672 14.9705 16.3597 14.9996 16.2501 15Z"
             fill={getSvgColor(theme)}
@@ -109,7 +136,20 @@ const Header = ({ toggleLeftSidebar, isLeftSidebarOpen, toggleRightSidebar, isRi
           />
         </svg>
 
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="cursor-pointer" onClick={toggleRightSidebar}>
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer focus:outline-none"
+          onClick={toggleRightSidebar}
+          role="button"
+          aria-label="Open right sidebar"
+          data-tooltip-id="header-tip"
+          data-tooltip-content="Right sidebar"
+          tabIndex="0"
+        >
           <path
             d="M6.875 3.75V16.25H3.125C2.95924 16.25 2.80027 16.1842 2.68306 16.0669C2.56585 15.9497 2.5 15.7908 2.5 15.625V4.375C2.5 4.20924 2.56585 4.05027 2.68306 3.93306C2.80027 3.81585 2.95924 3.75 3.125 3.75H6.875Z"
             fill={theme === "light" ? "#1C1C1C" : "white"}
