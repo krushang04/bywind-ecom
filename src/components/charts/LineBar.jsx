@@ -65,13 +65,13 @@ const LineBarChart = () => {
       className="flex flex-col h-full"
       bodyClassName="flex-1"
     >
-      <div className="w-full" style={{ height: "420px" }}>
+      <div className="w-full pb-6" style={{ height: "100%" }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
             margin={{
-              top: 20,
-              right: 0,
+              top: 30,
+              right: 10,
               left: 0,
               bottom: 0,
             }}

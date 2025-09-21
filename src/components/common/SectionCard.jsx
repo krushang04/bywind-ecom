@@ -18,7 +18,7 @@ export default function SectionCard({ title, headerRight = null, className = "",
           {headerRight}
         </header>
       )}
-      <div className={`p-6 pt-4 ${bodyClassName}`}>{children}</div>
+      <div className={`${bodyClassName} px-6`}>{children}</div>
     </section>
   );
 }

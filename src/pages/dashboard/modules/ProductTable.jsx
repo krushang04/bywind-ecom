@@ -3,7 +3,6 @@ import { formatCurrency } from "../../../utils/formatters";
 import { defaultProducts as defaultProductsData } from "../../../utils/data";
 
 const ProductTable = ({ products, title = "Top Selling Products", loading = false }) => {
-
   const displayProducts = products || defaultProductsData;
 
   if (loading) {
@@ -24,15 +23,15 @@ const ProductTable = ({ products, title = "Top Selling Products", loading = fals
   }
 
   return (
-    <SectionCard title={title} className="h-full flex flex-col">
+    <SectionCard title={title} className="h-full flex flex-col gap-1">
       <div className="overflow-x-auto flex-1">
         <table className="w-full">
           <thead>
             <tr className="border-b border-black-new-20 dark:border-white-new-20 text-black-new-40 dark:text-white-new-40 text-left text-text-sm">
-              <th className="py-2 text-xs font-medium tracking-wider">Name</th>
-              <th className="py-2 text-xs font-medium tracking-wider">Price</th>
-              <th className="py-2 text-xs font-medium tracking-wider">Quantity</th>
-              <th className="py-2 text-xs font-medium tracking-wider">Amount</th>
+              <th className="py-2 font-medium tracking-wider">Name</th>
+              <th className="py-2 font-medium tracking-wider">Price</th>
+              <th className="py-2 font-medium tracking-wider">Quantity</th>
+              <th className="py-2 font-medium tracking-wider">Amount</th>
             </tr>
           </thead>
           <tbody>

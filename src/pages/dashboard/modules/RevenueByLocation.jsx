@@ -15,13 +15,9 @@ const RevenueByLocation = () => {
   }, []);
 
   return (
-    <SectionCard title="Revenue by Location" className="space-y-4">
+    <SectionCard title="Revenue by Location" className="space-y-4 pb-6">
       {/* Map Section */}
-      <WorldMap
-        className="mb-6"
-        height={mapHeight}
-        markers={revenueData.map((r) => ({ key: r.name, coordinates: r.coordinates }))}
-      />
+      <WorldMap className="mb-6" height={mapHeight} markers={revenueData.map((r) => ({ key: r.name, coordinates: r.coordinates }))} />
 
       {/* Location List with Revenue Bars */}
       <div className="space-y-4">

@@ -21,7 +21,7 @@ const TotalSales = () => {
   return (
     <SectionCard title="Total Sales" className="w-full h-[348px] lg:h-full flex flex-col">
       {/* Pie Chart */}
-      <div className="flex justify-center items-center flex-1">
+      <div className="flex justify-center items-center flex-1 pb-6">
         <CustomPieChart data={salesData} />
       </div>
     </SectionCard>

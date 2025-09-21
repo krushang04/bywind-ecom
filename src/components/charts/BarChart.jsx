@@ -41,16 +41,16 @@ const ProjectionsVsActualsChart = () => {
   const colors = getChartColors(theme);
 
   return (
-    <SectionCard title="Projections vs Actuals" className="h-full">
-      <div className="w-full h-[248px] lg:h-[180px]">
+    <SectionCard title="Projections vs Actuals" className="h-full pb-6 flex flex-col gap-1">
+      <div className="w-full h-[248px] lg:h-[178px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={data}
             margin={{
-              top: 10,
+              top: 20,
               right: 0,
-              left: 0,
-              bottom: 10,
+              left: -5,
+              bottom: 0,
             }}
             barCategoryGap="30%"
           >
@@ -67,13 +67,7 @@ const ProjectionsVsActualsChart = () => {
             />
             <Bar dataKey="actuals" stackId="a" fill={theme === "dark" ? "#6B7280" : colors.secondary} radius={[0, 0, 0, 0]} />
             <Bar dataKey="projections" stackId="a" fill={theme === "dark" ? "#374151" : "#A8C5DA80"} radius={[5, 5, 0, 0]} />
-            <XAxis
-              dataKey="month"
-              axisLine={{ stroke: colors.axisLine, strokeWidth: 1 }}
-              tickLine={false}
-              tick={{ fill: "#94a3b8", fontSize: 12, fontWeight: 400 }}
-              dy={5}
-            />
+            <XAxis dataKey="month" axisLine={{ stroke: colors.axisLine, strokeWidth: 1 }} tickLine={false} tick={{ fill: "#94a3b8", fontSize: 12, fontWeight: 400 }} dy={5} />
           </BarChart>
         </ResponsiveContainer>
       </div>
