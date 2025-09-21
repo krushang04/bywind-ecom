@@ -1,6 +1,6 @@
 import React from "react";
-import ArrowRise from "../../../assests/ArrowRise.png";
-import ArrowFall from "../../../assests/ArrowFall.png";
+import ArrowRise from "../../../assets/ArrowRise.png";
+import ArrowFall from "../../../assets/ArrowFall.png";
 
 const MetricCard = React.memo(({ title, value, change, isPositive, bgColor }) => (
   <div className={`p-4 sm:p-6 rounded-lg hover:shadow-md transition-shadow duration-200 text-black-new-100`} style={{ background: bgColor }}>
