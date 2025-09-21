@@ -49,7 +49,7 @@ const Header = ({ toggleLeftSidebar, isLeftSidebarOpen, toggleRightSidebar, isRi
         <img src={Sun} alt="theme" onClick={toggleTheme} className="cursor-pointer" title="Theme" />
         <img src={ClockCounterClockwise} alt="history" title="History" />
         <img src={Bell} alt="notifications" className="cursor-pointer" title="Notifications" />
-        <img src={Sidebar} alt="rightSideBar" className="cursor-pointer" title="Right Side Bar" />
+        <img src={Sidebar} alt="rightSideBar" className="cursor-pointer" title="Right Side Bar" onClick={toggleRightSidebar} />
       </div>
     </div>
   </header>

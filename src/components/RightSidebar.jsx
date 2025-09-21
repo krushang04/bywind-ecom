@@ -41,10 +41,10 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => (
   <aside
     className={`
       fixed top-0 right-0 z-40 w-[17.5rem] sm:w-80 bg-new-black-10 shadow-xl border-l
-      lg:relative lg:translate-x-0 lg:w-80 lg:shrink-0 lg:z-auto
+      lg:relative lg:w-80 lg:shrink-0 lg:z-auto
       transform transition-transform duration-300 ease-in-out
       h-full overflow-y-auto p-5
-      ${isOpen ? "translate-x-0" : "translate-x-full"}
+      translate-x-0
     `}
   >
     {/* Header */}

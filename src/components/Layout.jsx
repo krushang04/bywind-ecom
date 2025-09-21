@@ -57,8 +57,10 @@ const Layout = () => {
           </main>
         </div>
 
-        {/* Right Sidebar - Always visible on desktop */}
-        <RightSidebar isOpen={isRightSidebarOpen} toggleSidebar={toggleRightSidebar} />
+        {/* Right Sidebar - Responsive behavior */}
+        {isRightSidebarOpen && (
+          <RightSidebar isOpen={isRightSidebarOpen} toggleSidebar={toggleRightSidebar} />
+        )}
       </div>
     </div>
   );
