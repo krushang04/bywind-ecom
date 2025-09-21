@@ -83,7 +83,7 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => (
         <div className="text-text-md font-semibold text-black-new-100 py-2 px-1 flex items-center">Activities</div>
         <div className="relative">
           {/* Timeline connector line */}
-          <div className="absolute left-4 top-4 bottom-4 w-px bg-gray-300"></div>
+          <div className="absolute left-4 top-8 bottom-10 w-px bg-black-new-10"></div>
 
           <div className="space-y-4">
             {activitiesData.map((activity) => (
