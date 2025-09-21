@@ -97,8 +97,8 @@ module.exports = {
         "display-xs": ["1.5rem", { lineHeight: "2rem" }],
         "text-xl": ["1.25rem", { lineHeight: "1.75rem" }],
         "text-lg": ["1rem", { lineHeight: "1.5rem" }],
-        "text-md": [".75rem", { lineHeight: "1.25rem" }],
-        "text-sm": [".625rem", { lineHeight: "1.125rem" }],
+        "text-md": [".875rem", { lineHeight: "1.25rem" }],
+        "text-sm": [".75rem", { lineHeight: "1.125rem" }],
         "text-xs": ["0.625rem", { lineHeight: "1rem" }],
       },
       backgroundImage: {

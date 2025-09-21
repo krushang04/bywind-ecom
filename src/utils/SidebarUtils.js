@@ -73,39 +73,69 @@ export const activitiesData = [
     key: "activity1",
     text: "You have a bug that needs...",
     timestamp: "Just now",
-    avatar: { initials: "A", gradient: "from-blue-400 to-blue-600", hasOnlineIndicator: true },
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face",
   },
   {
     key: "activity2",
     text: "Released a new version",
     timestamp: "59 minutes ago",
-    avatar: { initials: "B", gradient: "from-purple-400 to-purple-600" },
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face",
   },
   {
     key: "activity3",
     text: "Submitted a bug",
     timestamp: "12 hours ago",
-    avatar: { initials: "C", gradient: "from-pink-400 to-pink-600" },
+    avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=40&h=40&fit=crop&crop=face",
   },
   {
     key: "activity4",
     text: "Modified A data in Page X",
     timestamp: "Today, 11:59 AM",
-    avatar: { initials: "D", gradient: "from-indigo-400 to-indigo-600" },
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&fit=crop&crop=face",
   },
   {
     key: "activity5",
     text: "Deleted a page in Project X",
     timestamp: "Feb 2, 2023",
-    avatar: { initials: "E", gradient: "from-orange-400 to-orange-600" },
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop&crop=face",
   },
 ];
 
 export const contactsData = [
-  { key: "contact1", name: "Natali Craig", initials: "NC", gradient: "from-gray-400 to-gray-600" },
-  { key: "contact2", name: "Drew Cano", initials: "DC", gradient: "from-red-400 to-red-600" },
-  { key: "contact3", name: "Orlando Diggs", initials: "OD", gradient: "from-yellow-400 to-yellow-600" },
-  { key: "contact4", name: "Andi Lane", initials: "AL", gradient: "from-green-400 to-green-600" },
-  { key: "contact5", name: "Kate Morrison", initials: "KM", gradient: "from-teal-400 to-teal-600" },
-  { key: "contact6", name: "Koray Okumus", initials: "KO", gradient: "from-cyan-400 to-cyan-600" },
+  {
+    key: "contact1",
+    name: "Natali Craig",
+    initials: "NC",
+    avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=40&h=40&fit=crop&crop=face", // Female
+  },
+  {
+    key: "contact2",
+    name: "Drew Cano",
+    initials: "DC",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop&crop=face", // Male
+  },
+  {
+    key: "contact3",
+    name: "Orlando Diggs",
+    initials: "OD",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=40&h=40&fit=crop&crop=face", // Male
+  },
+  {
+    key: "contact4",
+    name: "Andi Lane",
+    initials: "AL",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=40&h=40&fit=crop&crop=face", // Female
+  },
+  {
+    key: "contact5",
+    name: "Kate Morrison",
+    initials: "KM",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=40&h=40&fit=crop&crop=face", // Female
+  },
+  {
+    key: "contact6",
+    name: "Koray Okumus",
+    initials: "KO",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face", // Male
+  },
 ];
