@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import ArrowsDownUp from "../assets/ArrowsDownUp.png";
 import FunnelSimple from "../assets/FunnelSimple.png";
 import Add from "../assets/Add.png";
@@ -11,14 +11,41 @@ const Orders = () => {
   const [selectedRows, setSelectedRows] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("desc"); // 'asc' or 'desc'
+  const [isSorted, setIsSorted] = useState(false);
 
   const allOrders = [...ordersData];
 
+  const filteredOrders = allOrders.filter(
+    (order) =>
+      order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.project.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const sortedOrders = useMemo(() => {
+    if (!isSorted) return filteredOrders;
+    
+    return [...filteredOrders].sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.timeline - b.timeline;
+      } else {
+        return b.timeline - a.timeline;
+      }
+    });
+  }, [filteredOrders, sortOrder, isSorted]);
+
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(sortedOrders.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedOrders = sortedOrders.slice(startIndex, endIndex);
+
   const handleSelectAll = () => {
-    if (selectedRows.size === allOrders.length) {
+    if (selectedRows.size === paginatedOrders.length) {
       setSelectedRows(new Set());
     } else {
-      setSelectedRows(new Set(allOrders.map((_, index) => index)));
+      setSelectedRows(new Set(paginatedOrders.map((_, index) => startIndex + index)));
     }
   };
 
@@ -32,12 +59,24 @@ const Orders = () => {
     setSelectedRows(newSelected);
   };
 
-  const filteredOrders = allOrders.filter(
-    (order) =>
-      order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.project.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleSort = () => {
+    if (!isSorted) {
+      setSortOrder("desc");
+      setIsSorted(true);
+    } else {
+      setSortOrder(sortOrder === "desc" ? "asc" : "desc");
+    }
+    setCurrentPage(1); // Reset to first page when sorting
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Reset to first page when search term changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
   return (
     <div className=" bg-white w-full flex flex-col gap-3">
@@ -47,7 +86,13 @@ const Orders = () => {
         <div className="flex items-center gap-3 ">
           <img src={Add} alt="Add" />
           <img src={FunnelSimple} alt="sorting" />
-          <img src={ArrowsDownUp} alt="filter" />
+          <img 
+            src={ArrowsDownUp} 
+            alt="filter" 
+            className={`cursor-pointer transition-opacity ${isSorted ? 'opacity-100' : 'opacity-60 hover:opacity-100'}`}
+            onClick={handleSort}
+            title={`Sort by date ${isSorted ? (sortOrder === 'desc' ? '(Newest first)' : '(Oldest first)') : '(Click to sort)'}`}
+          />
         </div>
 
         {/* Search Bar */}
@@ -75,7 +120,7 @@ const Orders = () => {
                 <th className="px-2 sm:px-3 py-2 text-left">
                   <input
                     type="checkbox"
-                    checked={selectedRows.size === allOrders.length && allOrders.length > 0}
+                    checked={selectedRows.size === paginatedOrders.length && paginatedOrders.length > 0}
                     onChange={handleSelectAll}
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
                   />
@@ -90,13 +135,13 @@ const Orders = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200 text-black-new-100 text-text-sm">
-              {filteredOrders.map((order, index) => (
-                <tr key={index} className="hover:bg-[#F7F9FB] transition-colors border-b border-[#1C1C1C0D]">
+              {paginatedOrders.map((order, index) => (
+                <tr key={startIndex + index} className="hover:bg-[#F7F9FB] transition-colors border-b border-[#1C1C1C0D]">
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap">
                     <input
                       type="checkbox"
-                      checked={selectedRows.has(index)}
-                      onChange={() => handleSelectRow(index)}
+                      checked={selectedRows.has(startIndex + index)}
+                      onChange={() => handleSelectRow(startIndex + index)}
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
                     />
                   </td>
@@ -151,7 +196,7 @@ const Orders = () => {
           <div className="flex items-center justify-center sm:justify-end">
             <nav className="flex items-center space-x-1">
               <button
-                onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                 className="p-2 text-gray-400 hover:text-black-new-100 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={currentPage === 1}
               >
@@ -160,10 +205,10 @@ const Orders = () => {
                 </svg>
               </button>
 
-              {[1, 2, 3, 4, 5].map((page) => (
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
-                  onClick={() => setCurrentPage(page)}
+                  onClick={() => handlePageChange(page)}
                   className={`px-3 py-2 text-text-sm font-medium rounded-md text-black-new-100 ${currentPage === page ? "bg-[#1C1C1C0D] " : " hover:bg-[#1C1C1C0D]"}`}
                 >
                   {page}
@@ -171,9 +216,9 @@ const Orders = () => {
               ))}
 
               <button
-                onClick={() => setCurrentPage(Math.min(5, currentPage + 1))}
+                onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                 className="p-2 text-gray-400 hover:text-black-new-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={currentPage === 5}
+                disabled={currentPage === totalPages}
               >
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
