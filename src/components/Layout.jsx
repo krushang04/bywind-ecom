@@ -37,9 +37,9 @@ const Layout = () => {
 
   return (
     <div className={`min-h-screen font-sans antialiased transition-colors duration-300 ${theme === "dark" ? "dark" : ""}`}>
-      <div className="flex h-screen overflow-hidden">
+      <div className="flex h-screen overflow-hidden bg-white dark:bg-black-new-100">
         {/* Left Sidebar - Always visible on desktop */}
-        <LeftSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} />
+        <LeftSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} theme={theme} />
 
         {/* Mobile overlay */}
         {(isLeftSidebarOpen || isRightSidebarOpen) && (
@@ -62,7 +62,7 @@ const Layout = () => {
             theme={theme}
             toggleTheme={toggleTheme}
           />
-          <main className="flex-1 overflow-y-auto p-6 transition-all duration-300 dark:bg-black-new-100">
+          <main className="flex-1 overflow-y-auto p-6 transition-all duration-300">
             {/* <div className="bg-white dark:bg-black-new-100"> */}
             <Outlet />
             {/* </div> */}
