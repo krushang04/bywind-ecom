@@ -51,7 +51,7 @@ const RevenueByLocation = () => {
                   <span className="">{name}</span>
                   <span className="">{revenue}K</span>
                 </div>
-                <div className="w-full bg-white rounded-full h-1">
+                <div className="w-full bg-[#A8C5DA80] rounded-full h-1">
                   <div className="bg-[#A8C5DA] h-1 rounded-full transition-all duration-500" style={{ width: `${percentage}%` }} />
                 </div>
               </div>
