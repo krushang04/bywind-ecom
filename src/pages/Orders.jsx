@@ -197,7 +197,7 @@ const Orders = () => {
                   <td className="px-2 sm:px-3 py-2 whitespace-nowrap  ">
                     <div className="flex items-center">
                       <span>{order.address}</span>
-                      {order.id === "#CM9805" && (
+                      {typeof order.address === "string" && order.address.toLowerCase().includes("nest lane olivette".toLowerCase()) && (
                         <svg className="ml-1 h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path
                             strokeLinecap="round"
