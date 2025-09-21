@@ -39,12 +39,19 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       <div className="text-text-md text-black-new-40 py-1 px-3 space-y-1">Dashboard</div>
       {dashboardEnums.map((item) => {
         return (
-          <div key={item.key} className="text-text-md text-black-new-100 px-2 py-1 flex items-center gap-1 space-y-1">
-            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1C1C1C33">
-              <path d="M522-480 333-669l51-51 240 240-240 240-51-51 189-189Z" />
-            </svg>
+          <div key={item.key} className={`text-text-md text-black-new-100 pr-2 py-1 flex items-center gap-1 mt-1 ${item.isHighlighted ? "bg-[#1C1C1C0D] rounded-lg" : ""}`}>
+            {item.isHighlighted ? (
+              <div className="h-4 w-4">
+                <div className="bg-[#1C1C1C] rounded-lg w-1 h-full"></div>
+              </div>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1C1C1C33">
+                <path d="M522-480 333-669l51-51 240 240-240 240-51-51 189-189Z" />
+              </svg>
+            )}
+
             <img src={item.icon} alt={item.label} />
-            <div>{item.label}</div>
+            <div className="text-text-md">{item.label}</div>
           </div>
         );
       })}
@@ -54,7 +61,7 @@ const LeftSidebar = ({ isOpen, toggleSidebar }) => (
       {pagesEnums.map((item) => {
         return (
           <div key={item.key} className="space-y-1">
-            <div className="text-text-md text-black-new-100 px-2 py-1 flex items-center gap-1 space-y-1">
+            <div className="text-text-md text-black-new-100 px-2 py-1 flex items-center gap-1 mt-1">
               {item.hasChildren ? (
                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#1C1C1C33">
                   <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />

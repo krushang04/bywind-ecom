@@ -14,10 +14,10 @@ export const favEnums = [
 ];
 
 export const dashboardEnums = [
-  { key: "default", label: "Default", icon: ChartPieSlice },
-  { key: "eCommerce", label: "eCommerce", icon: ShoppingBagOpen },
-  { key: "projects", label: "Projects", icon: FolderNotch },
-  { key: "onlineCourses", label: "Online Courses", icon: BookOpen },
+  { key: "default", label: "Default", icon: ChartPieSlice, isHighlighted: true },
+  { key: "eCommerce", label: "eCommerce", icon: ShoppingBagOpen, isHighlighted: false },
+  { key: "projects", label: "Projects", icon: FolderNotch, isHighlighted: false },
+  { key: "onlineCourses", label: "Online Courses", icon: BookOpen, isHighlighted: false },
 ];
 
 export const pagesEnums = [
