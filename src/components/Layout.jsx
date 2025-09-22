@@ -48,6 +48,7 @@ const Layout = () => {
           anchorSelect='[data-tooltip-id="header-tip"]'
           positionStrategy="fixed"
           style={{ zIndex: 9999 }}
+          className="hidden md:block"
         />
         {/* Left Sidebar - Always visible on desktop */}
         <LeftSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} theme={theme} />
